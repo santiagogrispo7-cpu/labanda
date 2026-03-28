@@ -1,0 +1,81 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: beige;
+}
+h2 {
+  font-size: xx-large;
+  font-weight: lighter;
+  color: aqua;
+  letter-spacing: 10px;
+  text-align: center;
+  text-decoration: underline;
+  font-family: "Courier New", Courier, monospace;
+}
+section {
+  background-color: blue;
+  height: 400px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 29px 83px 80px 0px rgba(0, 0, 0, 0.51);
+  -webkit-box-shadow: 29px 83px 80px 0px rgba(0, 0, 0, 0.51);
+  -moz-box-shadow: 29px 83px 80px 0px rgba(0, 0, 0, 0.51);
+  border: 10px solid black;
+  color: white;
+  padding: 20px;
+  transition: 1s all ease-in-out;
+  margin-bottom: 100px;
+}
+
+section:hover {
+  transform: scale(1.2);
+  transition: 1s all ease-in-out;
+}
+img {
+  width: 200px;
+}
+.presentacion {
+  font-family: "Courier New", Courier, monospace;
+
+  text-align: center;
+  background-color: crimson;
+}
+.kevin {
+  font-family: "Times New Roman", Times, serif;
+  font-size: medium;
+  color: aliceblue;
+}
+footer {
+  padding: 5%;
+  background-color: black;
+  text-align: center;
+  color: aliceblue;
+}
+.rulo {
+  text-align: center;
+  color: rgb(255, 0, 0);
+}
+.keke {
+  text-align: center;
+  color: blue;
+}
+
+header {
+  padding: 5%;
+  font-size: xx-large;
+}
+.pelota {
+  text-align: end;
+  color: aliceblue;
+}
+.sky {
+  color: aliceblue;
+  text-align: end;
+}
+div h5 {
+  font-size: 50px;
+}
