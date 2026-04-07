@@ -1,0 +1,49 @@
+* {
+  margin: 0%;
+}
+h1 {
+  text-align: center;
+}
+header {
+  padding: 10px;
+  margin: 0%;
+  background-color: rgba(255, 242, 0, 1);
+}
+main {
+  padding: 2.5%;
+  padding-right: 100px;
+  padding-left: 500px;
+  background: #ffffff;
+  background-size: cover;
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 37%,
+    rgba(255, 242, 0, 1) 100%
+  );
+  display: grid;
+  grid-template-columns: 25% 25% 25%;
+  grid-template-rows: 400px 400px;
+  gap: 20px;
+}
+.volante {
+  background-color: rgb(212, 212, 212);
+  text-align: center;
+}
+.com {
+  padding: 10%;
+}
+.comprar {
+  background-color: aliceblue;
+  color: black;
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 7px 20px;
+}
+
+.llanta {
+  background-color: gray;
+}
+.rueda {
+  background-color: gray;
+}
