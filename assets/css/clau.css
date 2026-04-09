@@ -125,7 +125,7 @@ nav {
   color: aliceblue;
 }
 h2 {
-  margin-top: 100px;
+  margin-top: 150px;
   font:
     56px "Anthropic serif",
     Georgia,
@@ -154,12 +154,13 @@ h3 {
   padding: 28px;
 }
 .home {
-  width: 65%;
+  width: 75%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 50% 50%;
 }
 .google {
+  font-size: medium;
   align-items: center;
   width: 100%;
   padding: 10px 0px;
@@ -177,18 +178,77 @@ h3 {
 }
 
 .o {
+  font-size: medium;
   align-items: center;
   display: flex;
   justify-content: center;
   padding: 10px 0;
 }
 .correo {
+  font-size: medium;
   width: 100%;
-  padding: 10px 0px;
+  padding: 14px 0px;
+  padding-left: 20px;
+  box-sizing: border-box;
   color: white;
   border: 1px solid rgb(110, 107, 107);
   border-radius: 8px;
   background-color: #30302e;
-
   font-size: 17px;
+}
+.continuar {
+  font-size: medium;
+  width: 100%;
+  padding: 14px 0;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  color: gray;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+.continuar:hover {
+  background-color: rgb(216, 216, 216);
+  border-color: transparent;
+  transition: 0.3s all ease-in-out;
+  color: gray;
+}
+.politica {
+  margin-top: 10px;
+  text-align: center;
+  font-size: small;
+  color: gray;
+}
+.priv {
+  margin-top: 10px;
+  color: gray;
+}
+.apli {
+  height: 44px;
+  width: 334px;
+  font-size: medium;
+  align-items: center;
+
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;
+  background-color: #141414;
+  color: aliceblue;
+  border: 1px solid aliceblue;
+  border-radius: 10px;
+}
+.apli:hover {
+  background-color: black;
+  border-color: transparent;
+  transition: 0.3s all ease-in-out;
+}
+.cue {
+  height: 800px;
+  width: 730px;
+  border-radius: 20px;
+}
+.app {
+  width: 20px;
+  height: 20px;
+  padding-right: 30px;
 }
