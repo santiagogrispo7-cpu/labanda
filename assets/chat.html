@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nebula AI</title>
+
+    <style>
+      :root {
+        --bg1: #0b1020;
+        --bg2: #12182b;
+        --accent: #6366f1;
+        --user: linear-gradient(135deg, #6366f1, #818cf8);
+        --bot: rgba(255, 255, 255, 0.04);
+        --text: #e5e7eb;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background:
+          radial-gradient(
+            circle at 25% 30%,
+            rgba(99, 102, 241, 0.12),
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 75% 70%,
+            rgba(56, 189, 248, 0.1),
+            transparent 50%
+          ),
+          linear-gradient(135deg, var(--bg1), var(--bg2));
+        color: var(--text);
+        display: flex;
+        height: 100vh;
+      }
+
+      /* SIDEBAR */
+      .sidebar {
+        width: 240px;
+        backdrop-filter: blur(16px);
+        background: rgba(255, 255, 255, 0.04);
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 20px;
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #a5b4fc;
+      }
+
+      .new-chat {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        background: var(--accent);
+        color: white;
+        cursor: pointer;
+      }
+
+      /* MAIN */
+      .main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      /* HEADER */
+      .header {
+        padding: 14px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.03);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        font-size: 14px;
+        color: #94a3b8;
+      }
+
+      /* BIENVENIDA */
+      .welcome {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        opacity: 0.8;
+        transition: 0.3s;
+      }
+
+      .welcome h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .welcome p {
+        color: #94a3b8;
+      }
+
+      /* CHAT */
+      #chat {
+        flex: 1;
+        padding: 25px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      /* MENSAJES */
+      .msg {
+        max-width: 60%;
+        padding: 14px 16px;
+        border-radius: 14px;
+        line-height: 1.5;
+        animation: fadeIn 0.2s ease;
+      }
+
+      .user {
+        align-self: flex-end;
+        background: var(--user);
+      }
+
+      .bot {
+        align-self: flex-start;
+        background: var(--bot);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      /* INPUT */
+      .input-container {
+        padding: 18px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .input-box {
+        width: 100%;
+        max-width: 720px;
+        display: flex;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 999px;
+        padding: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: white;
+        padding: 10px;
+        outline: none;
+      }
+
+      button {
+        background: var(--accent);
+        border: none;
+        border-radius: 999px;
+        padding: 10px 16px;
+        cursor: pointer;
+        color: white;
+      }
+
+      /* LOADER */
+      .loader {
+        display: flex;
+        gap: 5px;
+      }
+
+      .loader div {
+        width: 7px;
+        height: 7px;
+        background: #94a3b8;
+        border-radius: 50%;
+        animation: bounce 1s infinite;
+      }
+
+      .loader div:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .loader div:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes bounce {
+        0%,
+        80%,
+        100% {
+          transform: scale(0);
+        }
+        40% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(4px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <div class="logo">Nebula AI</div>
+      <button class="new-chat" onclick="newChat()">+ Nuevo chat</button>
+    </div>
+
+    <div class="main">
+      <div class="header">Modelo: llama3.2:3b</div>
+
+      <!-- BIENVENIDA -->
+      <div class="welcome" id="welcome">
+        <h1>👋 Bienvenido</h1>
+        <p>Pregunta lo que quieras</p>
+      </div>
+
+      <div id="chat"></div>
+
+      <div class="input-container">
+        <div class="input-box">
+          <input
+            id="prompt"
+            placeholder="Escribe tu mensaje..."
+            onkeydown="if (event.key === 'Enter') sendMessage();"
+          />
+          <button onclick="sendMessage()">Enviar</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const API = "http://187.127.253.96:11434/api/generate";
+
+      function newChat() {
+        document.getElementById("chat").innerHTML = "";
+        document.getElementById("welcome").style.display = "block";
+      }
+
+      async function sendMessage() {
+        const input = document.getElementById("prompt");
+        const text = input.value.trim();
+        if (!text) return;
+
+        // Ocultar bienvenida
+        document.getElementById("welcome").style.display = "none";
+
+        addMessage(text, "user");
+        input.value = "";
+
+        const loader = addLoader();
+
+        try {
+          const res = await fetch(API, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              model: "llama3.2:3b",
+              prompt: text,
+              stream: false,
+            }),
+          });
+
+          const data = await res.json();
+          removeLoader(loader);
+          addMessage(data.response || "Sin respuesta", "bot");
+        } catch (e) {
+          removeLoader(loader);
+          addMessage("⚠️ Error de conexión", "bot");
+        }
+      }
+
+      function addMessage(text, type) {
+        const chat = document.getElementById("chat");
+        const msg = document.createElement("div");
+        msg.className = "msg " + type;
+        msg.textContent = text;
+        chat.appendChild(msg);
+        chat.scrollTop = chat.scrollHeight;
+      }
+
+      function addLoader() {
+        const chat = document.getElementById("chat");
+        const id = "load-" + Date.now();
+
+        const div = document.createElement("div");
+        div.className = "msg bot";
+        div.id = id;
+
+        div.innerHTML = `
+    <div class="loader">
+      <div></div><div></div><div></div>
+    </div>
+  `;
+
+        chat.appendChild(div);
+        return id;
+      }
+
+      function removeLoader(id) {
+        const el = document.getElementById(id);
+        if (el) el.remove();
+      }
+    </script>
+  </body>
+</html>
